@@ -1,0 +1,91 @@
+@mixin gen_color_vars($n, $c) {
+  --#{$n}-color-1: color-mix(in srgb, #{$c}, var(--background-color) 80%);
+  --#{$n}-color-2: color-mix(in srgb, #{$c}, var(--background-color) 70%);
+  --#{$n}-color-3: color-mix(in srgb, #{$c}, var(--background-color) 60%);
+  --#{$n}-color-4: color-mix(in srgb, #{$c}, var(--background-color) 50%);
+  --#{$n}-color-5: color-mix(in srgb, #{$c}, var(--background-color) 35%);
+  --#{$n}-color-6: color-mix(in srgb, #{$c}, var(--background-color) 20%);
+  --#{$n}-color-7: color-mix(in srgb, #{$c}, var(--background-color) 0%);
+  --#{$n}-color-8: color-mix(in srgb, #{$c}, var(--foreground-color) 15%);
+  --#{$n}-color-9: color-mix(in srgb, #{$c}, var(--foreground-color) 36%);
+  --#{$n}-color-10: color-mix(in srgb, #{$c}, var(--foreground-color) 50%);
+  --#{$n}-color-11: color-mix(in srgb, #{$c}, var(--foreground-color) 64%);
+  --#{$n}-color-12: color-mix(in srgb, #{$c}, var(--foreground-color) 75%);
+}
+
+:root {
+  --white-color: #ffffff;
+  --black-color: #000000;
+  --gray-color: #6c757d;
+  --gray-dark-color: #343a40;
+  --blue-color: #007bff;
+  --indigo-color: #6610f2;
+  --purple-color: #6f42c1;
+  --green-color: #28a745;
+  --red-color: #dc3545;
+  --yellow-color: #ffc107;
+  --orange-color: #fd7e14;
+  --pink-color: #e83e8c;
+  --cyan-color: #17a2b8;
+  --teal-color: #20c997;
+
+  $all-colors: (
+    gray,
+    gray-dark,
+    blue,
+    indigo,
+    purple,
+    green,
+    red,
+    yellow,
+    orange,
+    pink,
+    cyan,
+    teal
+  );
+  @each $color in $all-colors {
+    @include gen_color_vars($color, var(--#{$color}-color));
+  }
+
+  @include gen_color_vars(primary, var(--primary-color));
+  @include gen_color_vars(secondary, var(--secondary-color));
+}
+
+:root[theme="dark"] {
+  --foreground-color: var(--white-color);
+  --background-color: var(--black-color);
+  --secondary-color: var(--gray-dark-color);
+}
+:root[theme="light"] {
+  --foreground-color: var(--black-color);
+  --background-color: var(--white-color);
+  --secondary-color: var(--gray-color);
+}
+:root {
+  --base-size: 14px;
+  --base-padding: calc(var(--base-size) * 0.25);
+  --primary-color: var(--red-color);
+}
+
+body {
+  margin: 0;
+  font-size: var(--base-size);
+  font-family: "Roboto", sans-serif;
+  color: var(--secondary-color-12);
+  background-color: var(--background-color);
+}
+
+.o-btn {
+  padding: var(--base-padding) calc(var(--base-padding) * 2);
+  border-radius: var(--base-padding);
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--white-color);
+  font-size: calc(var(--base-size) * 0.88);
+}
+.o-btn:where(:hover, :focus) {
+  filter: brightness(1.15);
+}
+.o-btn:where(:active) {
+  filter: brightness(0.93);
+}
