@@ -28,6 +28,7 @@ pub fn DemoPage() -> impl IntoView {
             <Button variant=Variant::Outline>{"Outline"}</Button>
             <Button variant=Variant::Ghost>{"Ghost"}</Button>
             <Button variant=Variant::Link>{"Link"}</Button>
+            <Button variant=Variant::Surface>{"Surface"}</Button>
         </div>
 
         <table>
@@ -35,7 +36,7 @@ pub fn DemoPage() -> impl IntoView {
                 <tr>
                     <For each=move || { 1..13 } key=|n| *n let:item>
                         <td style=format!(
-                            "background-color:var(--{list}-color-{item});width:140px;height:24px",
+                            "background-color:var(--{list}-color-{item});width:132px;height:24px",
                         )>{format!("--{}-color-{}", list, item)}</td>
                     </For>
                 </tr>

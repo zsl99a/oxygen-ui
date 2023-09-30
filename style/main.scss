@@ -16,7 +16,7 @@
 :root {
   --white-color: #ffffff;
   --black-color: #000000;
-  --gray-color: #6c757d;
+  --gray-color: #a6a9aa;
   --gray-dark-color: #343a40;
   --blue-color: #007bff;
   --indigo-color: #6610f2;
@@ -80,22 +80,15 @@ body {
   border-radius: var(--base-padding);
   font-size: var(--base-size);
 }
-.o-btn:where(:hover, :focus) {
-  filter: brightness(1.15);
-}
-.o-btn:where(:active) {
-  filter: brightness(0.93);
-}
-
 .o-btn:where([variant="default"]) {
   background-color: var(--secondary-color-3);
   border: 1px solid var(--secondary-color-4);
-  color: var(--white-color);
+  color: var(--primary-color-11);
 }
 .o-btn:where([variant="solid"]) {
   background-color: var(--primary-color);
   border: 1px solid var(--primary-color);
-  color: var(--white-color);
+  color: color-mix(in srgb, var(--primary-color), var(--white-color) 97%);
 }
 .o-btn:where([variant="outline"]) {
   background-color: transparent;
@@ -105,10 +98,22 @@ body {
 .o-btn:where([variant="ghost"]) {
   background-color: transparent;
   border: 1px dashed var(--primary-color);
-  color: var(--secondary-color-11);
+  color: var(--primary-color);
 }
 .o-btn:where([variant="link"]) {
   background-color: transparent;
   border: none;
   color: var(--primary-color);
+}
+.o-btn:where([variant="surface"]) {
+  background-color: color-mix(in srgb, var(--primary-color-1), #bbb 15%);
+  border: 1px solid color-mix(in srgb, var(--primary-color-1), #bbb 15%);
+  color: var(--primary-color);
+}
+
+.o-btn:where(:hover) {
+  filter: brightness(1.1);
+}
+.o-btn:where(:active) {
+  filter: brightness(1.03);
 }

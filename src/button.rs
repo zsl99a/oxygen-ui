@@ -8,6 +8,7 @@ pub enum Variant {
     Outline,
     Ghost,
     Link,
+    Surface,
 }
 
 impl std::fmt::Display for Variant {
@@ -18,6 +19,7 @@ impl std::fmt::Display for Variant {
             Variant::Outline => write!(f, "outline"),
             Variant::Ghost => write!(f, "ghost"),
             Variant::Link => write!(f, "link"),
+            Variant::Surface => write!(f, "surface"),
         }
     }
 }
