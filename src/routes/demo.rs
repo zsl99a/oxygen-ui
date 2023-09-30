@@ -1,6 +1,6 @@
 use leptos::*;
 
-use crate::Button;
+use crate::{Button, Variant};
 
 #[component]
 pub fn DemoPage() -> impl IntoView {
@@ -17,19 +17,26 @@ pub fn DemoPage() -> impl IntoView {
         "pink",
         "cyan",
         "teal",
+        "primary",
+        "secondary",
     ];
 
     view! {
-        <Button>"Hello, World!"</Button>
-        <Button>"Hello, World!"</Button>
+        <div style="padding:10px">
+            <Button>{"Default"}</Button>
+            <Button variant=Variant::Solid>{"Solid"}</Button>
+            <Button variant=Variant::Outline>{"Outline"}</Button>
+            <Button variant=Variant::Ghost>{"Ghost"}</Button>
+            <Button variant=Variant::Link>{"Link"}</Button>
+        </div>
 
         <table>
             <For each=move || { colors.clone() } key=|n| *n let:list>
                 <tr>
                     <For each=move || { 1..13 } key=|n| *n let:item>
                         <td style=format!(
-                            "background-color:var(--{list}-color-{item});width:50px;height:20px",
-                        )></td>
+                            "background-color:var(--{list}-color-{item});width:140px;height:24px",
+                        )>{format!("--{}-color-{}", list, item)}</td>
                     </For>
                 </tr>
             </For>
