@@ -12,8 +12,8 @@ pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
 
-    // let theme = "light";
-    let theme = "dark";
+    let theme = "light";
+    // let theme = "dark";
 
     view! {
         <Html lang="en" attributes=vec![("theme", Attribute::String(theme.into())),]/>

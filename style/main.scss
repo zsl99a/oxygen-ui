@@ -1,14 +1,15 @@
 @mixin gen_color_vars($n, $c) {
-  --#{$n}-color-1: color-mix(in srgb, #{$c}, var(--background-color) 90%);
-  --#{$n}-color-2: color-mix(in srgb, #{$c}, var(--background-color) 75%);
-  --#{$n}-color-3: color-mix(in srgb, #{$c}, var(--background-color) 60%);
-  --#{$n}-color-4: color-mix(in srgb, #{$c}, var(--background-color) 50%);
-  --#{$n}-color-5: color-mix(in srgb, #{$c}, var(--background-color) 35%);
-  --#{$n}-color-6: color-mix(in srgb, #{$c}, var(--background-color) 20%);
-  --#{$n}-color-7: color-mix(in srgb, #{$c}, var(--background-color) 0%);
-  --#{$n}-color-8: color-mix(in srgb, #{$c}, var(--foreground-color) 20%);
-  --#{$n}-color-9: color-mix(in srgb, #{$c}, var(--foreground-color) 42%);
-  --#{$n}-color-10: color-mix(in srgb, #{$c}, var(--foreground-color) 56%);
+  --#{$n}-color-0: color-mix(in srgb, #{$c}, var(--background-color) 90%);
+  --#{$n}-color-1: color-mix(in srgb, #{$c}, var(--background-color) 75%);
+  --#{$n}-color-2: color-mix(in srgb, #{$c}, var(--background-color) 60%);
+  --#{$n}-color-3: color-mix(in srgb, #{$c}, var(--background-color) 45%);
+  --#{$n}-color-4: color-mix(in srgb, #{$c}, var(--background-color) 30%);
+  --#{$n}-color-5: color-mix(in srgb, #{$c}, var(--background-color) 15%);
+  --#{$n}-color-6: color-mix(in srgb, #{$c}, var(--background-color) 0%);
+  --#{$n}-color-7: color-mix(in srgb, #{$c}, var(--foreground-color) 15%);
+  --#{$n}-color-8: color-mix(in srgb, #{$c}, var(--foreground-color) 30%);
+  --#{$n}-color-9: color-mix(in srgb, #{$c}, var(--foreground-color) 45%);
+  --#{$n}-color-10: color-mix(in srgb, #{$c}, var(--foreground-color) 60%);
   --#{$n}-color-11: color-mix(in srgb, #{$c}, var(--foreground-color) 75%);
   --#{$n}-color-12: color-mix(in srgb, #{$c}, var(--foreground-color) 90%);
 }
@@ -16,7 +17,7 @@
 :root {
   --white-color: #ffffff;
   --black-color: #000000;
-  --gray-color: #a6a9aa;
+  --gray-color: #6c757d;
   --gray-dark-color: #343a40;
   --blue-color: #007bff;
   --indigo-color: #6610f2;
@@ -72,48 +73,70 @@ body {
   font-size: var(--base-size);
   font-family: "Roboto", sans-serif;
   color: var(--secondary-color-11);
-  background-color: var(--background-color);
+  background-color: var(--secondary-color-0);
 }
 
 .o-btn {
   padding: var(--base-padding) calc(var(--base-padding) * 2);
-  border-radius: var(--base-padding);
+  border-radius: var(--base-size);
   font-size: var(--base-size);
 }
-.o-btn:where([variant="default"]) {
-  background-color: var(--secondary-color-3);
-  border: 1px solid var(--secondary-color-4);
-  color: var(--primary-color-11);
+.o-btn:where([variant=default]) {
+  background-color: var(--secondary-color-1);
+  border: 1px solid var(--secondary-color-2);
+  color: var(--primary-color-10);
 }
-.o-btn:where([variant="solid"]) {
+.o-btn:where([variant=solid]) {
   background-color: var(--primary-color);
   border: 1px solid var(--primary-color);
   color: color-mix(in srgb, var(--primary-color), var(--white-color) 97%);
 }
-.o-btn:where([variant="outline"]) {
+.o-btn:where([variant=outline]) {
   background-color: transparent;
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
 }
-.o-btn:where([variant="ghost"]) {
+.o-btn:where([variant=ghost]) {
   background-color: transparent;
   border: 1px dashed var(--primary-color);
   color: var(--primary-color);
 }
-.o-btn:where([variant="link"]) {
+.o-btn:where([variant=link]) {
   background-color: transparent;
-  border: none;
+  border: 1px solid transparent;
   color: var(--primary-color);
 }
-.o-btn:where([variant="surface"]) {
-  background-color: color-mix(in srgb, var(--primary-color-1), #bbb 15%);
-  border: 1px solid color-mix(in srgb, var(--primary-color-1), #bbb 15%);
+.o-btn:where([variant=surface]) {
+  background-color: color-mix(in srgb, var(--primary-color-0), #888 15%);
+  border: 1px solid color-mix(in srgb, var(--primary-color-0), #888 15%);
   color: var(--primary-color);
 }
 
 .o-btn:where(:hover) {
-  filter: brightness(1.1);
+  filter: brightness(1.05);
 }
 .o-btn:where(:active) {
-  filter: brightness(1.03);
+  filter: brightness(1.02);
+}
+.o-btn:where([variant=outline], [variant=ghost], [variant=link]):hover {
+  filter: brightness(1.25);
+}
+.o-btn:where([variant=outline], [variant=ghost], [variant=link]):active {
+  filter: brightness(1.1);
+}
+
+.o-btn-group {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.o-btn-group > .o-btn:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px;
+}
+.o-btn-group > .o-btn:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }

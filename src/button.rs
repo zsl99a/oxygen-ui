@@ -32,3 +32,9 @@ pub fn Button(#[prop(optional)] variant: Variant, children: Children) -> impl In
         </button>
     }
 }
+
+
+#[component]
+pub fn ButtonGroup(children: Children) -> impl IntoView {
+    view! { <div class="o-btn-group">{children()}</div> }
+}
